@@ -1,0 +1,48 @@
+body{
+    background-color: #232323;
+    font-family:Calibri, 'Trebuchet MS', sans-serif;
+    margin: 5%;
+}
+
+#content-header{
+
+}
+
+#content-header h1{
+    color: #eee;
+    letter-spacing: 2px;
+    font-size: 4em;
+}
+
+#content-body{
+
+}
+
+.weather-container{
+    border-radius: 5px;
+    padding: 10px;
+    margin: 10px;
+    width: 30%;
+    background-color: lightgray;
+    position: relative;
+}
+
+.weather-container h2{
+    color: #232323;
+    font-weight: 800;
+}
+
+.weather-icon-wrapper{
+    position: absolute;
+    top: 30px;
+    right: 30px;
+}
+
+.weather-icon-wrapper i{
+    font-size: 3rem;
+    color: darkcyan;
+}
+
+#content-footer{
+
+}
