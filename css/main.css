@@ -1,6 +1,6 @@
 body{
     background-color: #232323;
-    font-family:Calibri, 'Trebuchet MS', sans-serif;
+    font-family:Calibri, 'Trebuchet MS', sans-serif!important;
     margin: 5%;
 }
 
@@ -18,9 +18,37 @@ body{
 
 }
 
+#location-form{
+    border-radius: 5px;
+    padding: 50px;
+    margin: 10px;
+    width: 30%;
+    background-color: rgb(128, 125, 125);
+}
+
+#location-form input{
+    border: 0;
+    border-radius: 3px;
+    height: 30px;
+    width: 170px;
+    
+}
+
+#location-form button{
+    background-color: #ADC700;
+    border: 0;
+    border-radius: 3px;
+    height: 30px;
+    width: 140px;
+}
+
+#location-form button:hover{
+    cursor: pointer;
+}
+
 .weather-container{
     border-radius: 5px;
-    padding: 10px;
+    padding: 50px;
     margin: 10px;
     width: 30%;
     background-color: lightgray;
@@ -38,11 +66,13 @@ body{
     right: 30px;
 }
 
-.weather-icon-wrapper i{
-    font-size: 3rem;
-    color: darkcyan;
-}
 
 #content-footer{
+    position: fixed;
+    bottom: 50px;
+    width: 100%;
+}
 
+#creator-link{
+    color: #eee;
 }

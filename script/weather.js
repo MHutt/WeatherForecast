@@ -1,22 +1,26 @@
 //Weather API URL
-const api = "https://api.weatherapi.com/v1/current.json?key=3b7880dcde52498ea02133133223012&q=Belfast"
+const api = "https://api.weatherapi.com/v1/current.json?key=3b7880dcde52498ea02133133223012&q="
 
 // API Call
-fetch(api)
+function getData(url){
+    fetch(url)
     .then(response => response.json())
     .then(responseJson => {
-        
+        //Display weather
         CreateWeatherContainer(responseJson);
 
-    });
+    }).catch(response =>{
+        //Display error
+        WeatherError("Unknown Location");
+    })
+}
 
-
+//Create dynamic container for weather
 function CreateWeatherContainer(data){
     var container = document.createElement('div');
     container.classList.add("weather-container");
 
-
-    para = document.createElement('p');
+    para = document.createElement('h2');
     para.id = "";
     para.innerText = data.location.region;
     container.appendChild(para);
@@ -61,38 +65,54 @@ function CreateWeatherContainer(data){
     para.innerText = data.current.wind_degree + ' \u{00B0}' + "   |   " + data.current.wind_dir ;
     container.appendChild(para);
 
-    container.appendChild(CreateIconForCondition(data.current.condition.text));
-    //CreateIconForCondition(data.current.condition.text);
-
-    document.getElementById("content-body").appendChild(container);
-}    
-
-///Create the icon element based on the condtion text
-///Requires fontawesome free
-function CreateIconForCondition(condition){
-
     var elementWrapper = document.createElement("div");
     elementWrapper.classList.add("weather-icon-wrapper");
-    
-    var element = document.createElement("i");
-    element.classList.add("fa-solid")
+    para = document.createElement('img');
+    para.id = "";
+    para.src = "https:" + data.current.condition.icon;
+    para.title = data.current.condition.text;
+    elementWrapper.appendChild(para);
+    container.appendChild(elementWrapper);
 
-    elementWrapper.appendChild(element)
+    document.getElementById("weather-content").appendChild(container);
+}    
 
-    switch (condition) {
-        case "Overcast":
-            element.classList.add("fa-cloud");
-            break;
-        case "Partly cloudy":
-            element.classList.add("fa-cloud-sun");
+//Get weather for location
+function GetWeather(){
+    var location = document.getElementById("location-input").value;
+    document.getElementById("weather-content").innerHTML = "";
+
+    var url = api + location;
+
+    getData(url);
+}
+
+//Create error message for unknown location
+function WeatherError(type){
+    var container = document.createElement('div');
+    container.classList.add("weather-container");
+    para = document.createElement('h2');
+    para.id = "";
+    switch (type) {
+        case "Unknown Location":
+            para.innerText = "Error - Cannot find location!";
             break;
     
         default:
-            element.classList.add("fa-question");
+            para.innerText = "Error!";
             break;
     }
 
-    //document.getElementById("weather-container").appendChild(elementWrapper);
-    return elementWrapper;
+    
+    container.appendChild(para);
+
+    document.getElementById("weather-content").appendChild(container);
 }
 
+//On Load
+function OnLoad(){ 
+      getData(api + "London")
+}
+
+//Execute OnLoad
+OnLoad();

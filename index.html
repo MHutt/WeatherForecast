@@ -14,8 +14,22 @@
         </div>
         <div id="content-body">
 
+            <div id="location-form">
+                <h1>Location Search </h3>
+                <p>Enter a location to get the current weather.</p>
+                <input type="text" placeholder="Enter Location" id="location-input"/>
+                <button onclick="GetWeather()">Get Weather</button>
+            </div>
+
+            <div id="weather-content">
+                
+            </div>
+
         </div>
-        <div id="content-header"></div>
+        <div id="content-footer">
+            <a href="https://www.weatherapi.com/" title="Free Weather API"><img src='https://cdn.weatherapi.com/v4/images/weatherapi_logo.png' alt="Weather data by WeatherAPI.com" border="0"></a>
+            <a href="http://matthewhutt.com" title="Creator Website" id="creator-link" target="_blank">Created by Matthew Hutt</a>
+        </div>
 
         <script src="script/weather.js"></script>
     </body>
